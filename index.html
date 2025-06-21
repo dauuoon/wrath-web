@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>THE SEVEN FUTURES : NER-CORE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spoqa+Han+Sans+Neo:wght@400;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="intro.css">
+    <link rel="icon" type="image/png" href="src/assets/favicon.png">
+</head>
+<body style="background:#99320F;">
+    <div class="intro">
+        <video id="intro-bg-video" autoplay muted loop playsinline>
+          <source src="src/assets/final.mp4" type="video/mp4" media="(min-width: 800px)">
+          <source src="src/assets/final_m.MP4" type="video/mp4" media="(max-width: 799px)">
+        </video>
+        <div class="intro-controls">
+            <button class="sound-toggle-btn">Sound OFF</button>
+            <button class="enter-btn">ENTER &gt;</button>
+        </div>
+        <div class="intro-popup" style="display:none;">
+            <div class="intro-popup-inner">
+                <div class="popup-btn-row">
+                    <button class="popup-close-btn" aria-label="닫기" title="닫기" tabindex="0">&times;</button>
+                </div>
+                <p class="popup-main">인터랙티브 웹 전시이며,<br>사운드 장치 및 마이크 장치가 필요합니다.</p>
+                <p class="popup-sub">This interactive web exhibition, requires both a sound device (speaker, earphones, headphones, etc.) and a microphone.</p>
+                <button class="popup-ok-btn">확인</button>
+            </div>
+        </div>
+    </div>
+    <div class="white-fade" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:#fff;opacity:0;pointer-events:none;z-index:2000;transition:opacity 0.7s cubic-bezier(.4,0,.2,1);"></div>
+    <!-- 음악 토글 버튼과 섹션 네비게이션을 intro 밖, body 바로 아래에 위치 -->
+    <button class="music-toggle-btn" style="display:none;">
+      <img id="music-on-icon" src="src/assets/music-on.svg" alt="Music ON Icon" style="display:none;">
+      <img id="music-off-icon" src="src/assets/music-off.svg" alt="Music OFF Icon">
+    </button>
+    <div class="section-nav">
+      <div class="section-dot" data-section="1"></div>
+      <div class="section-dot" data-section="2"></div>
+      <div class="section-dot" data-section="3"></div>
+      <div class="section-dot" data-section="4"></div>
+      <div class="section-dot" data-section="5"></div>
+      <div class="section-dot" data-section="6"></div>
+    </div>
+    <header style="display:none;" class="glitch">
+        <!-- <nav class="gnb">
+            <div class="gnb-logo">
+                <a href="index.html"><img src="src/assets/logo.png" alt="NER-CORE Logo" /></a>
+            </div>          
+            <ul class="gnb-menu">
+                <li><a href="ner-core.html">NER-CORE</a></li>
+                <li><a href="sns.html">SNS</a></li>
+                <li class="hide"><a href="#">ARCHIVE</a></li>
+                <li><a href="review.html">REVIEW</a></li>
+                <li><a href="credits.html">CREDITS</a></li>
+            </ul>
+        </nav> -->
+    </header>
+    <main style="display:none;" class="glitch">
+
+       <!-- <div class="scroll-down" style="display:none;">
+        <span>Scroll Down</span>
+        <div class="arrow"></div>
+       </div> -->
+
+        <audio id="background-music" loop>
+          <source src="src/assets/background-music.mp3" type="audio/mpeg">
+        </audio>
+        
+        <div class="intro-section" id="section1">
+            <video autoplay muted loop playsinline>
+                <source src="src/assets/s1.MP4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <img src="src/assets/t1.png" alt="t1 이미지">
+        </div>
+
+        <div class="intro-section" id="section2">
+            <video autoplay muted loop playsinline>
+                <source src="src/assets/s2.MP4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <img src="src/assets/t2.png" alt="t2 이미지">
+        </div>        
+
+        <div class="intro-section" id="section3">
+            <video autoplay muted loop playsinline>
+                <source src="src/assets/s3.MP4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <img src="src/assets/t3.png" alt="t3 이미지">
+        </div>   
+
+        <div class="intro-section" id="section4">
+            <video autoplay muted loop playsinline>
+                <source src="src/assets/s4.MP4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <img src="src/assets/t4.png" alt="t4 이미지">
+        </div>  
+
+        <div class="intro-section" id="section5">
+            <video autoplay muted loop playsinline>
+                <source src="src/assets/s5.MP4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <img src="src/assets/t5.png" alt="t5 이미지">
+        </div> 
+
+        <div class="intro-section" id="section6">
+            <video autoplay muted loop playsinline>
+                <source src="src/assets/s6.MP4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <img src="src/assets/t6.png" alt="t6 이미지">
+
+            <div class="btn-area">
+                 <button class="interactive-btn">분노 에너지 추출 장치 체험하기</button>
+            </div>
+        </div> 
+    
+        <!-- <button class="home-btn">홈으로 가기</button> -->
+
+    
+
+    <footer style="display:none;" class="glitch">
+        <p>&copy; 2025 THE SEVEN FUTURES : WRATH</p>
+    </footer>
+
+
+    <script>
+    const video = document.getElementById('intro-bg-video');
+    const soundBtn = document.querySelector('.sound-toggle-btn');
+    const whiteFade = document.querySelector('.white-fade');
+    const popup = document.querySelector('.intro-popup');
+    const enterBtn = document.querySelector('.enter-btn');
+    const popupOkBtn = document.querySelector('.popup-ok-btn');
+    const popupCloseBtn = document.querySelector('.popup-close-btn');
+    const music = document.getElementById('background-music');
+    const musicToggleBtn = document.querySelector('.music-toggle-btn');
+    const musicOnIcon = document.getElementById('music-on-icon');
+    const musicOffIcon = document.getElementById('music-off-icon');
+
+    let popupChecked = false;
+
+    soundBtn.addEventListener('click', function() {
+        video.muted = !video.muted;
+        soundBtn.textContent = video.muted ? 'Sound OFF' : 'Sound ON';
+    });
+
+    musicToggleBtn.addEventListener('click', function() {
+        if (music.paused) {
+            music.play();
+            if (musicOnIcon) musicOnIcon.style.display = 'block';
+            if (musicOffIcon) musicOffIcon.style.display = 'none';
+        } else {
+            music.pause();
+            if (musicOnIcon) musicOnIcon.style.display = 'none';
+            if (musicOffIcon) musicOffIcon.style.display = 'block';
+        }
+    });
+
+    // 안전하게 music-toggle-btn 숨기기
+    const musicToggleBtnEl = document.querySelector('.music-toggle-btn');
+    if (musicToggleBtnEl) musicToggleBtnEl.style.display = 'none';
+
+    enterBtn.addEventListener('click', function() {
+        if (!popupChecked) {
+            popup.style.display = 'flex';
+            return;
+        }
+        whiteFade.style.opacity = 1;
+        setTimeout(function() {
+            video.muted = false;
+            video.pause();
+            document.querySelector('.intro').style.display = 'none';
+            document.querySelector('header').style.display = '';
+            document.querySelector('main').style.display = '';
+            document.querySelector('footer').style.display = '';
+            whiteFade.style.opacity = 0;
+            const scrollDown = document.querySelector('.scroll-down');
+            if (scrollDown) scrollDown.style.display = 'block';
+            if (musicToggleBtn) musicToggleBtn.style.display = 'block';
+            music.play(); // 배경음악 자동 재생
+            // t1 이미지 바로 보이게 visible 강제 추가
+            const t1img = document.querySelector('#section1 img');
+            if (t1img) t1img.classList.add('visible');
+        }, 700);
+    });
+
+    popupOkBtn.addEventListener('click', function() {
+        popupChecked = true;
+        popup.style.display = 'none';
+        enterBtn.click();
+    });
+
+    popupCloseBtn.addEventListener('click', function() {
+        popup.style.display = 'none';
+    });
+
+    // whiteFade transitionend 안전하게 처리
+    if (whiteFade) {
+        whiteFade.addEventListener('transitionend', function() {
+            const header = document.querySelector('header');
+            const scrollDown = document.querySelector('.scroll-down');
+            if (header) header.style.display = 'none';
+            if (scrollDown) scrollDown.style.display = 'block';
+        });
+    }
+
+    // 안전하게 interactive-btn 이벤트 등록
+    const interactiveBtn = document.querySelector('.interactive-btn');
+    if (interactiveBtn) {
+        interactiveBtn.addEventListener('click', function() {
+            window.location.href = 'interactive.html';
+        });
+    }
+
+    // // 안전하게 home-btn 이벤트 등록
+    // const homeBtn = document.querySelector('.home-btn');
+    // if (homeBtn) {
+    //     homeBtn.addEventListener('click', function() {
+    //         window.location.href = 'ner-core.html';
+    //     });
+    // }
+
+    let isScrolling = false;
+    let lastScrollTime = 0;
+
+    const sections = document.querySelectorAll('.intro-section');
+
+    window.addEventListener('wheel', function(e) {
+        if (isScrolling) return;
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+        let currentIdx = 0;
+        let minDist = Infinity;
+        // 현재 화면 중앙에 가장 가까운 섹션 찾기
+        sections.forEach((section, idx) => {
+            const rect = section.getBoundingClientRect();
+            const sectionCenter = rect.top + rect.height / 2;
+            const dist = Math.abs(sectionCenter - windowHeight / 2);
+            if (dist < minDist) {
+                minDist = dist;
+                currentIdx = idx;
+            }
+        });
+        let targetIdx = currentIdx;
+        if (e.deltaY > 0 && currentIdx < sections.length - 1) {
+            // 아래로 휠: 다음 섹션
+            targetIdx = currentIdx + 1;
+        } else if (e.deltaY < 0 && currentIdx > 0) {
+            // 위로 휠: 이전 섹션
+            targetIdx = currentIdx - 1;
+        }
+        if (targetIdx !== currentIdx) {
+            isScrolling = true;
+            window.scrollTo({
+                top: sections[targetIdx].offsetTop,
+                behavior: 'smooth'
+            });
+            setTimeout(() => isScrolling = false, 800);
+        }
+    });
+
+    // 스크롤 시 섹션 중앙에 가까우면 자동 정렬
+    window.addEventListener('scroll', function() {
+        if (isScrolling) return;
+        const windowHeight = window.innerHeight;
+        let closestSection = null;
+        let closestDistance = Infinity;
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            const sectionCenter = rect.top + rect.height / 2;
+            const distance = Math.abs(sectionCenter - windowHeight / 2);
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestSection = section;
+            }
+        });
+        // 중앙에서 200px 이내로 가까워지면 자동 정렬
+        if (closestSection && closestDistance < 200) {
+            isScrolling = true;
+            window.scrollTo({
+                top: closestSection.offsetTop,
+                behavior: 'smooth'
+            });
+            setTimeout(() => isScrolling = false, 800);
+        }
+    });
+
+    // 이미지 디졸브(페이드인) 효과: 스크롤 시 각 섹션 이미지가 뷰포트에 들어오면 visible 클래스 추가
+window.addEventListener('scroll', function() {
+  const images = document.querySelectorAll('.intro-section img');
+  const windowHeight = window.innerHeight;
+  images.forEach(img => {
+    const rect = img.getBoundingClientRect();
+    if (rect.top < windowHeight * 0.85 && rect.bottom > windowHeight * 0.15) {
+      img.classList.add('visible');
+    } else {
+      img.classList.remove('visible');
+    }
+  });
+});
+// 최초 진입 시에도 체크
+setTimeout(() => {
+  const images = document.querySelectorAll('.intro-section img');
+  const windowHeight = window.innerHeight;
+  images.forEach(img => {
+    const rect = img.getBoundingClientRect();
+    if (rect.top < windowHeight * 0.85 && rect.bottom > windowHeight * 0.15) {
+      img.classList.add('visible');
+    } else {
+      img.classList.remove('visible');
+    }
+  });
+}, 100);
+
+// 섹션 네비게이션 동작
+const sectionDots = document.querySelectorAll('.section-dot');
+const sectionArr = Array.from(document.querySelectorAll('.intro-section'));
+function updateSectionNav() {
+  const windowHeight = window.innerHeight;
+  let activeIdx = 0;
+  let minDist = Infinity;
+  sectionArr.forEach((section, idx) => {
+    const rect = section.getBoundingClientRect();
+    const sectionCenter = rect.top + rect.height / 2;
+    const dist = Math.abs(sectionCenter - windowHeight / 2);
+    if (dist < minDist) {
+      minDist = dist;
+      activeIdx = idx;
+    }
+  });
+  sectionDots.forEach((dot, idx) => {
+    if (idx === activeIdx) {
+      dot.classList.add('active');
+    } else {
+      dot.classList.remove('active');
+    }
+  });
+}
+window.addEventListener('scroll', updateSectionNav);
+window.addEventListener('resize', updateSectionNav);
+sectionDots.forEach((dot, idx) => {
+  dot.addEventListener('click', function() {
+    window.scrollTo({
+      top: sectionArr[idx].offsetTop,
+      behavior: 'smooth'
+    });
+  });
+});
+updateSectionNav();
+
+// 섹션 네비게이션, 음악 토글 버튼 인트로 화면에서는 숨기기
+function setNavAndMusicBtnVisible(visible) {
+  const nav = document.querySelector('.section-nav');
+  const musicBtn = document.querySelector('.music-toggle-btn');
+  if (nav) nav.style.display = visible ? 'flex' : 'none';
+  if (musicBtn) musicBtn.style.display = visible ? 'block' : 'none';
+}
+// 인트로 진입 전에는 숨김
+setNavAndMusicBtnVisible(false);
+// enterBtn 클릭 시에만 보이게
+enterBtn.addEventListener('click', function() {
+    // ...existing code...
+    setTimeout(function() {
+        // ...existing code...
+        setNavAndMusicBtnVisible(true);
+        music.play(); // 배경음악 자동 재생
+    }, 700);
+});
+    </script>
+    <script src="common.js"></script>
+    
+</body>
+</html>

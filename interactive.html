@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>Interactive</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="intro.css">
+</head>
+<body style="background: #121212;">
+    <header>
+        <h1>Interactive Page</h1>
+    </header>
+    <main>
+        <p>이 페이지는 인터랙티브 콘텐츠를 위한 공간입니다.</p>
+    </main>
+    <script src="common.js"></script>
+    <script>
+const ws = new WebSocket("wss://sevenfutures-wrath.onrender.com");
+
+navigator.mediaDevices.getUserMedia({ audio: true })
+  .then(stream => {
+    const audioContext = new AudioContext();
+    const mic = audioContext.createMediaStreamSource(stream);
+    const analyser = audioContext.createAnalyser();
+    mic.connect(analyser);
+    
+    const data = new Uint8Array(analyser.frequencyBinCount);
+    
+    function sendVolume() {
+      analyser.getByteFrequencyData(data);
+      const average = data.reduce((a, b) => a + b) / data.length;
+      const normalized = average / 255;
+      ws.send(normalized.toFixed(3)); // 0.000 ~ 1.000
+      requestAnimationFrame(sendVolume);
+    }
+    
+    sendVolume();
+  });
+</script>
+
+</body>
+</html>

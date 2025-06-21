@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>REVIEW</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spoqa+Han+Sans+Neo:wght@400;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="intro.css">
+    <link rel="stylesheet" href="review.css">
+    <link rel="icon" type="image/png" href="src/assets/favicon.png">
+</head>
+<body style="background:#121212;">
+    <header class="glitch">
+        <nav class="gnb">
+            <div class="gnb-logo">
+                <a href="index.html"><img src="src/assets/logo.png" alt="NER-CORE Logo" /></a>
+            </div>
+            <ul class="gnb-menu">
+                <li><a href="ner-core.html">NER-CORE</a></li>
+                <li><a href="sns.html">SNS</a></li>
+                <li class="hide"><a href="#">ARCHIVE</a></li>
+                <li><a href="review.html" class="active">REVIEW</a></li>
+                <li><a href="credits.html">CREDITS</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="glitch">
+        <div class="review-main">
+            <img src="src/assets/review_icon.gif" alt="review icon" class="review-gif" />
+            <div class="review-desc">
+                
+                <strong>THE SEVEN FUTURES : WRATH</strong>
+                        NER-CORE는 ‘일곱 가지 죄악-미래’ 프로젝트의 What if 상상으로 분노·혐오가 극단화된 사회의 통제와 치유의 경계를 묻고<br>
+                        감정 통제 시스템이 만든 디스토피아를 그리는 픽션 기반 인터랙티브 웹 전시입니다.<br><br>
+                <span>전시를 체험한 후 느낀 점, 생각, 분노와 혐오의 ‘에너지’가 남긴 여운을 자유롭게 남겨주세요.<br>당신의 리뷰가 곧 또 다른 대화의 시작입니다.</span>
+            </div>
+            <form class="review-form" autocomplete="off">
+                <div class="review-error">관람평을 입력해 주세요.</div>
+                <textarea class="review-text" name="review" maxlength="300" placeholder="관람평을 남겨주세요. (최대 300자)" required></textarea>
+                <div class="review-form-bottom">
+                    <span class="review-count"><span class="count">0</span>/300</span>
+                    <button type="submit" class="review-submit">등록</button>
+                </div>
+            </form>
+            <div class="review-list">
+                <!-- 관람평 목록이 여기에 표시됩니다. -->
+            </div>
+        </div>
+    </main>
+    <script>
+const textarea = document.querySelector('.review-text');
+const countSpan = document.querySelector('.review-count .count');
+const form = document.querySelector('.review-form');
+const list = document.querySelector('.review-list');
+const errorMsg = document.querySelector('.review-error');
+
+// 글자수 카운트
+textarea.addEventListener('input', function() {
+    countSpan.textContent = textarea.value.length;
+    if (textarea.value.trim().length > 0) {
+        errorMsg.style.display = 'none';
+    }
+});
+
+// 관람평 등록
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const text = textarea.value.trim();
+    if (!text) {
+        errorMsg.style.display = 'block';
+        textarea.focus();
+        return;
+    }
+    errorMsg.style.display = 'none';
+    const item = document.createElement('div');
+    item.className = 'review-item';
+    item.innerHTML = `<span class="review-date">${new Date().toLocaleDateString('ko-KR')}</span><p>${text.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</p>`;
+    list.prepend(item);
+    textarea.value = '';
+    countSpan.textContent = '0';
+});
+</script>
+<script src="common.js"></script>
+</body>
+</html>

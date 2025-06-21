@@ -1,0 +1,44 @@
+/* credits.css - CREDITS 페이지 전용 스타일 */
+body {
+  background: #121212;
+}
+.credits-section {
+  margin: 3rem auto 0 auto;
+  max-width: 800px;
+  text-align: center;
+  border-radius: 16px;
+  padding: 2.2rem 2rem 2.2rem 2rem;
+
+}
+.credits-section h3 {
+  color: #FF3511;
+  font-family: 'Syncopate', Arial, sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+}
+.credits-list {
+  list-style: disc inside;
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding-left: 0.3em;
+  font-weight: 300;
+}
+.credits-list li {
+  margin-bottom: 0.7em;
+}
+.credits-list a {
+  color: #5ee0c6;
+  text-decoration: underline;
+  transition: color 0.15s;
+}
+.credits-list a:hover {
+  color: #FF3511;
+}
+@media (max-width: 600px) {
+  .credits-section {
+    padding: 1.2rem 0.7rem;
+    max-width: 98vw;
+  }
+}

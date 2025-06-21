@@ -1,0 +1,102 @@
+/* 공통 CSS 스타일 */
+
+body {
+    font-family: 'Syncopate', 'Spoqa Han Sans Neo', 'Malgun Gothic', Arial, sans-serif;
+}
+
+/* 한글에만 Spoqa Han Sans Neo 적용 */
+html:lang(ko) body, body:lang(ko) {
+    font-family: 'Spoqa Han Sans Neo', 'Syncopate', 'Malgun Gothic', Arial, sans-serif;
+}
+
+:root {
+    --point-color: #FF3511;
+}
+
+/* gnb 스타일 */
+.gnb {
+    font-family: 'Syncopate', Arial, sans-serif !important;
+    width: 100%;
+    max-width: 1244px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 1.5rem;
+    position: relative;
+    z-index: 10;
+}
+.gnb-logo img {
+    height: 48px;
+    display: block;
+}
+.gnb-menu {
+    display: flex;
+    gap: 2.2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+}
+.gnb-menu li {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+.gnb-menu li.hide {
+    display: none;
+}
+.gnb-menu a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.3em 0.7em;
+    border-radius: 6px;
+    transition: background 0.18s, color 0.18s;
+}
+.gnb-menu a.active, .gnb-menu a:hover {
+    background: none;
+    color: var(--point-color, #FF3511);
+}
+@media (max-width: 700px) {
+    .gnb {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 0.5rem;
+    }
+    .gnb-menu {
+        gap: 1.1rem;
+        font-size: 0.98rem;
+    }
+    .gnb-logo img {
+        height: 36px;
+    }
+}
+
+::selection {
+    background: #FF3511;
+    color: #fff;
+}
+
+.glitch {
+  animation: glitch-blink 1.6s infinite steps(1, end) alternate;
+}
+@keyframes glitch-blink {
+  0%, 96% {
+    filter: none;
+    opacity: 1;
+    transform: none;
+  }
+  97%, 98% {
+    filter: contrast(1.08) brightness(1.04) hue-rotate(2deg);
+    opacity: 0.85;
+    transform: skew(0.2deg, 0.2deg) translate(0.5px, -0.5px);
+  }
+  99%, 100% {
+    filter: contrast(1.13) brightness(1.08) hue-rotate(-2deg);
+    opacity: 0.7;
+    transform: skew(-0.2deg, -0.2deg) translate(-0.5px, 0.5px);
+  }
+}
+
+

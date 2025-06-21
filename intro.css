@@ -1,0 +1,338 @@
+/* intro 섹션 전용 CSS */
+.intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: transparent;
+    overflow: hidden;
+}
+.intro video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+}
+.enter-btn {
+    position: relative;
+    z-index: 1;
+    font-family: 'Syncopate', 'Spoqa Han Sans Neo', 'Malgun Gothic', Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    width: 300px;
+    height: 64px;
+    border-radius: 60px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(0, 0, 0, 0.50);
+    margin-top: 0;
+    margin-bottom: 0;
+    cursor: pointer;
+    transition: background 0.2s, border 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.enter-btn:hover {
+    background: rgba(0, 0, 0, 0.211);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+}
+.sound-toggle-btn {
+    position: relative;
+    z-index: 1;
+    font-family: 'Syncopate', 'Spoqa Han Sans Neo', 'Malgun Gothic', Arial, sans-serif;
+    font-size: 16px;
+    color: #fff;
+    width: 160px;
+    height: 64px;
+    border-radius: 60px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(0, 0, 0, 0.50);
+    margin-top: 0;
+    margin-bottom: 0;
+    cursor: pointer;
+    transition: background 0.2s, border 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sound-toggle-btn:hover {
+    background: rgba(0, 0, 0, 0.211);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+}
+.intro-controls {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 200px;
+    position: relative;
+    z-index: 2;
+}
+.intro-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.55);
+    z-index: 3000;
+    align-items: center;
+    justify-content: center;
+}
+.intro-popup-inner {
+    background: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    max-width: 90vw;
+    width: 400px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.popup-main {
+    color: #222;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    font-family: 'Spoqa Han Sans Neo', 'Malgun Gothic', Arial, sans-serif;
+    font-weight: 700;
+}
+.popup-sub {
+    color: #666;
+    font-size: 0.7rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    font-family: 'Syncopate', 'Spoqa Han Sans Neo', Arial, sans-serif;
+    font-weight: 400;
+}
+.popup-ok-btn {
+    font-size: 1.1rem;
+    padding: 0.7rem 2.2rem;
+    border-radius: 30px;
+    border: none;
+    background: #222;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.popup-ok-btn:hover {
+    background: #FF3511;
+}
+.popup-btn-row {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.5rem;
+}
+.popup-close-btn {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 2rem;
+    cursor: pointer;
+    margin-right: -0.5rem;
+    transition: color 0.2s;
+    line-height: 0.5;
+}
+.popup-close-btn:hover {
+    color: #222;
+}
+
+.scroll-down {
+    position: fixed;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    color: #fff;
+    animation: bounce 1.5s infinite;
+    z-index: 1000;
+    opacity: 0.6;
+}
+.scroll-down .arrow {
+    width: 15px; /* 화살표 크기 조정 */
+    height: 15px;
+    border: solid #fff;
+    border-width: 0 1px 1px 0; /* 화살표 두께 조정 */
+    transform: rotate(45deg); /* 화살표 방향 설정 */
+    margin: 10px auto 0; /* 중앙 배치 유지 */
+}
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+.music-toggle-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: transparent; /* 배경을 투명으로 설정 */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    z-index: 2001; /* scroll-down보다 위에 오도록 z-index 높임 */
+    box-shadow: none;
+    outline: none;
+}
+
+footer {
+    font-size: 12px; /* 폰트 크기 설정 */
+    color: #ffffff4f; /* 폰트 색상 설정 */
+    text-align: center; /* 중앙 정렬 */
+}
+
+
+/* intro 섹션 스타일 */
+.intro-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.intro-section video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+.intro-section img {
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 70%;
+    opacity: 0;
+    transition: opacity 1.2s cubic-bezier(.4,0,.2,1);
+    will-change: opacity;
+    /* transform, translateY 등 위치 변화 완전히 제거 */
+}
+
+.intro-section img.visible {
+    opacity: 1;
+}
+
+.interactive-btn {
+    display: block;
+    margin: 20px auto;
+    background-color: #FF3511;
+    color: #000000;
+    border: none;
+    padding: 20px 40px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 50px;
+    z-index: 2200;
+    animation: shake-btn 2.2s cubic-bezier(.36,.07,.19,.97) infinite;
+    /* 흔들림 애니메이션 추가 */
+}
+
+@keyframes shake-btn {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  10% { transform: translateX(-1px) rotate(-1deg); }
+  20% { transform: translateX(2px) rotate(1deg); }
+  30% { transform: translateX(-3x) rotate(-1.5deg); }
+  40% { transform: translateX(3px) rotate(1.5deg); }
+  50% { transform: translateX(-2px) rotate(-1deg); }
+  60% { transform: translateX(1px) rotate(0.5deg); }
+  70% { transform: translateX(-1px) rotate(-0.5deg); }
+  80% { transform: translateX(1px) rotate(0.5deg); }
+  90% { transform: translateX(-0.5px) rotate(0deg); }
+}
+.home-btn {
+    display: inline-block;
+    margin-right: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+}
+video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0;
+    padding: 0;
+}
+
+.btn-area {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  
+}
+.btn-area:hover {
+  opacity: 0.8;
+  transition: opacity 0.1s;
+}
+
+/* 섹션 네비게이션 스타일 */
+.section-nav {
+  position: fixed !important;
+  left: 50% !important;
+  bottom: 40px !important;
+  transform: translateX(-50%) !important;
+  display: flex;
+  gap: 18px;
+  z-index: 2100;
+  pointer-events: auto;
+}
+.section-dot {
+
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  transition: background 0.3s, border 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+.section-dot.active {
+  background: #fff;
+
+}
+@media (max-width: 600px) {
+  .section-nav {
+    bottom: 18px !important;
+    gap: 10px;
+  }
+  .section-dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
