@@ -168,3 +168,23 @@ body {
     margin: 0 auto 0.8rem auto;
     background: #121212;
 }
+
+/* 삭제 버튼 스타일 */
+.styled-delete {
+  background: transparent;
+  color: #FF3511;
+  border: 0.5px solid #ff351163;
+  border-radius: 16px;
+  padding: 0.7em 1.0em;
+  font-size: 0.6rem;
+  font-family: 'Syncopate', 'Spoqa Han Sans Neo', Arial, sans-serif;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, border 0.18s;
+  margin-left: 0.7em;
+  float: right;
+}
+.styled-delete:hover {
+  background: #FF3511;
+  color: #fff;
+}

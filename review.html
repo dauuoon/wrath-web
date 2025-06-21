@@ -72,7 +72,7 @@ function loadReviews() {
         item.innerHTML = `
           <span class="review-date">${r.date ? r.date : ''}</span>
           <p>${(r.text || '').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</p>
-          <button class="review-delete-btn">삭제</button>
+          <button class="review-delete-btn styled-delete">Del</button>
         `;
         // 삭제 버튼 이벤트
         item.querySelector('.review-delete-btn').onclick = function() {
