@@ -56,15 +56,36 @@ const form = document.querySelector('.review-form');
 const list = document.querySelector('.review-list');
 const errorMsg = document.querySelector('.review-error');
 
-// 글자수 카운트
-textarea.addEventListener('input', function() {
-    countSpan.textContent = textarea.value.length;
-    if (textarea.value.trim().length > 0) {
-        errorMsg.style.display = 'none';
-    }
-});
+// 리뷰 서버 주소(아래 주소를 본인 Render 백엔드 API 주소로 바꿔주세요)
+const REVIEW_API = 'https://your-review-server.onrender.com/api/reviews';
 
-// 관람평 등록
+// 리뷰 목록 불러오기
+function loadReviews() {
+  fetch(REVIEW_API)
+    .then(res => res.json())
+    .then(reviews => {
+      list.innerHTML = '';
+      reviews.forEach(r => {
+        const item = document.createElement('div');
+        item.className = 'review-item';
+        item.setAttribute('data-id', r.id || r._id || '');
+        item.innerHTML = `
+          <span class="review-date">${r.date ? r.date : ''}</span>
+          <p>${(r.text || '').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</p>
+          <button class="review-delete-btn">삭제</button>
+        `;
+        // 삭제 버튼 이벤트
+        item.querySelector('.review-delete-btn').onclick = function() {
+          if (confirm('정말 삭제하시겠습니까?')) {
+            deleteReview(item.getAttribute('data-id'));
+          }
+        };
+        list.appendChild(item);
+      });
+    });
+}
+
+// 리뷰 등록
 form.addEventListener('submit', function(e) {
     e.preventDefault();
     const text = textarea.value.trim();
@@ -74,13 +95,35 @@ form.addEventListener('submit', function(e) {
         return;
     }
     errorMsg.style.display = 'none';
-    const item = document.createElement('div');
-    item.className = 'review-item';
-    item.innerHTML = `<span class="review-date">${new Date().toLocaleDateString('ko-KR')}</span><p>${text.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</p>`;
-    list.prepend(item);
-    textarea.value = '';
-    countSpan.textContent = '0';
+    fetch(REVIEW_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text })
+    })
+    .then(res => res.json())
+    .then(() => {
+      textarea.value = '';
+      countSpan.textContent = '0';
+      loadReviews();
+    });
 });
+
+// 리뷰 삭제
+function deleteReview(id) {
+  fetch(`${REVIEW_API}/${id}`, { method: 'DELETE' })
+    .then(() => loadReviews());
+}
+
+// 글자수 카운트
+textarea.addEventListener('input', function() {
+    countSpan.textContent = textarea.value.length;
+    if (textarea.value.trim().length > 0) {
+        errorMsg.style.display = 'none';
+    }
+});
+
+// 페이지 진입 시 리뷰 목록 불러오기
+loadReviews();
 </script>
 <script src="common.js"></script>
 </body>
