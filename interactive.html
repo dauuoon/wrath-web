@@ -15,29 +15,29 @@
     </main>
     <script src="common.js"></script>
     <script src="touch-websocket.js"></script>
-    <script>
-const ws = new WebSocket("wss://sevenfutures-wrath.onrender.com");
+    <!-- 아래 중복 선언 제거: ws 객체는 touch-websocket.js에서만 선언 -->
+    <!-- <script>
+    const ws = new WebSocket("wss://sevenfutures-wrath.onrender.com");
 
-navigator.mediaDevices.getUserMedia({ audio: true })
-  .then(stream => {
-    const audioContext = new AudioContext();
-    const mic = audioContext.createMediaStreamSource(stream);
-    const analyser = audioContext.createAnalyser();
-    mic.connect(analyser);
-    
-    const data = new Uint8Array(analyser.frequencyBinCount);
-    
-    function sendVolume() {
-      analyser.getByteFrequencyData(data);
-      const average = data.reduce((a, b) => a + b) / data.length;
-      const normalized = average / 255;
-      ws.send(normalized.toFixed(3)); // 0.000 ~ 1.000
-      requestAnimationFrame(sendVolume);
-    }
-    
-    sendVolume();
-  });
-</script>
-
+    navigator.mediaDevices.getUserMedia({ audio: true })
+      .then(stream => {
+        const audioContext = new AudioContext();
+        const mic = audioContext.createMediaStreamSource(stream);
+        const analyser = audioContext.createAnalyser();
+        mic.connect(analyser);
+        
+        const data = new Uint8Array(analyser.frequencyBinCount);
+        
+        function sendVolume() {
+          analyser.getByteFrequencyData(data);
+          const average = data.reduce((a, b) => a + b) / data.length;
+          const normalized = average / 255;
+          ws.send(normalized.toFixed(3)); // 0.000 ~ 1.000
+          requestAnimationFrame(sendVolume);
+        }
+        
+        sendVolume();
+      });
+    </script> -->
 </body>
 </html>
