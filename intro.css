@@ -425,3 +425,38 @@ video {
   object-fit: contain;
   align-self: flex-end;
 }
+
+/* 게이지바 하단 버튼 영역 */
+.gaugebar-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+  margin-top: 32px;
+  width: 360px;
+  padding-left: 1440px;
+  padding-top:220px;
+}
+.gaugebar-btn {
+  font-family: 'Syncopate', 'Spoqa Han Sans Neo', Arial, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: #fff;
+  color: #222;
+  border: none;
+  border-radius: 40px;
+  padding: 22px 0;
+  box-shadow: 0 2px 12px #0002;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.gaugebar-btn.energy {
+  background: #FF3511;
+  color: #fff;
+  margin-bottom: 0;
+}
+.gaugebar-btn:active {
+  filter: brightness(0.95);
+}
