@@ -460,3 +460,16 @@ video {
 .gaugebar-btn:active {
   filter: brightness(0.95);
 }
+#captureImg {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 10/9;
+  object-fit: contain;
+
+  border-radius: 12px;
+  box-shadow: 0 2px 16px #0006;
+  display: block;
+  max-width: 80vw;
+  max-height: 70vh;
+  margin: 0 auto;
+}

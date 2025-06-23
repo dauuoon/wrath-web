@@ -26,11 +26,9 @@
       </div>
       <div class="gaugebar-numtext" id="gaugebarNumText">100</div>
    
-      
-
-  
-    <script src="common.js"></script>
+      <script src="common.js"></script>
     <script src="touch-websocket.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <!-- 아래 중복 선언 제거: ws 객체는 touch-websocket.js에서만 선언 -->
     <!-- <script>
     const ws = new WebSocket("wss://sevenfutures-wrath.onrender.com");
@@ -117,8 +115,21 @@
         window.location.href = 'ner-core.html';
       };
       document.getElementById('energyBtn').onclick = function() {
-        alert('에너지 추출 기능은 준비 중입니다!');
+        const target = document.querySelector('.interactive-bgbox');
+        html2canvas(target, {backgroundColor: null, useCORS: true}).then(canvas => {
+          document.getElementById('captureImg').src = canvas.toDataURL('image/png');
+          document.getElementById('captureModal').style.display = 'flex';
+        });
+      };
+      document.getElementById('closeCaptureModal').onclick = function() {
+        document.getElementById('captureModal').style.display = 'none';
       };
     </script>
+    <div id="captureModal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.75); align-items:center; justify-content:center;">
+      <div style="background:#111; border-radius:18px; padding:32px 24px 24px 24px; box-shadow:0 4px 32px #000a; display:flex; flex-direction:column; align-items:center; max-width:90vw; max-height:90vh;">
+        <button id="closeCaptureModal" style="align-self:flex-end; background:none; border:none; color:#fff; font-size:2rem; cursor:pointer; margin-bottom:8px;">&times;</button>
+        <img id="captureImg" src="" alt="캡처 이미지" style="max-width:90vw; max-height:70vh; border-radius:12px; box-shadow:0 2px 16px #0006; background:#222;" />
+      </div>
+    </div>
 </body>
 </html>
