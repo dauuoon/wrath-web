@@ -336,3 +336,92 @@ video {
   }
 }
 
+/* --- Interactive 이미지 뒤 배경 박스와 로고 스타일 --- */
+.interactive-bgbox {
+  position: absolute;
+  left: 100px;
+  top: 80px;
+  width: 1200px;
+  height: 920px;
+  border-radius: 14px;
+  background: #000;
+  z-index: 0;
+  overflow: hidden;
+}
+.interactive-bgvideo {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 14px;
+  display: block;
+  margin: 0;
+}
+.interactive-logo {
+  position: absolute;
+  left: 180px;
+  top: 160px;
+  z-index: 1;
+  display: block;
+  max-width: 400px;
+  max-height: 400px;
+}
+.interactive-date {
+  color: #ffffff4b;
+  font-family: 'Syncopate', 'Spoqa Han Sans Neo', Arial, sans-serif;
+  font-size: 1rem;
+  text-align: left;
+  margin-left: 100px;
+  margin-top: 18px;
+  letter-spacing: 0.04em;
+  position: absolute;
+  bottom: 140px;
+  left: 100px;
+  z-index: 2;
+}
+.interactive-gaugebar {
+  position: absolute;
+  left: 1340px;
+  top: 85px;
+  width: 60px;
+  height: 910px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-start;
+  z-index: 2;
+}
+.gaugebar-track {
+  width: 100px;
+  height: 100%;
+  background: #181818;
+  border-radius: 50px;
+  box-shadow: 0 0 0 6px #111;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.gaugebar-fill {
+  width: 100%;
+  background: #FF3511;
+  border-radius: 50px 50px 40px 40px;
+  box-shadow: 0 0 16px #FF3511aa;
+  transition: height 0.3s cubic-bezier(.4,2,.6,1);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.gaugebar-numimg {
+  display: block;
+  margin-left: 1440px;
+  margin-top: 80px;
+  width: 340px;
+  height: auto;
+  object-fit: contain;
+  align-self: flex-end;
+}
