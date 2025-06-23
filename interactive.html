@@ -7,12 +7,27 @@
     <link rel="stylesheet" href="intro.css">
 </head>
 <body style="background: #121212;">
-    <header>
-        <h1>Interactive Page</h1>
-    </header>
-    <main>
-        <p>이 페이지는 인터랙티브 콘텐츠를 위한 공간입니다.</p>
-    </main>
+    
+    
+      <div class="interactive-bgbox">
+        <video class="interactive-bgvideo" src="src/assets/rec.mp4" autoplay loop muted playsinline></video>
+      </div>
+      <div class="interactive-gaugebar">
+        <div class="gaugebar-track">
+          <div class="gaugebar-fill" style="height: 45%"></div>
+        </div>
+      </div>
+      <img src="src/assets/logo2.png" alt="Interactive logo" class="interactive-logo" />
+      <div class="interactive-date" id="interactiveDate"></div>
+      <img src="src/assets/num.png" alt="게이지 숫자" class="gaugebar-numimg" />
+      <div class="gaugebar-numtext" id="gaugebarNumText">100</div>
+      <div style="position:absolute; left:1340px; top:1020px; display:flex; flex-direction:row; gap:18px; z-index:3; width:460px;">
+        <button id="homeBtn" style="font-family:'Syncopate','Spoqa Han Sans Neo',Arial,sans-serif;font-size:1.2rem;font-weight:700;background:#fff;color:#222;border:none;border-radius:40px;padding:22px 0;box-shadow:0 2px 12px #0002;cursor:pointer;transition:background 0.2s;width:220px;">홈으로</button>
+        <button id="energyBtn" style="font-family:'Syncopate','Spoqa Han Sans Neo',Arial,sans-serif;font-size:1.2rem;font-weight:700;background:#FF3511;color:#fff;border:none;border-radius:40px;padding:22px 0;box-shadow:0 2px 12px #0002;cursor:pointer;transition:background 0.2s;width:220px;">에너지 추출</button>
+      </div>
+      
+
+  
     <script src="common.js"></script>
     <script src="touch-websocket.js"></script>
     <!-- 아래 중복 선언 제거: ws 객체는 touch-websocket.js에서만 선언 -->
@@ -39,5 +54,70 @@
         sendVolume();
       });
     </script> -->
+    <script>
+      function updateDate() {
+        // 한국 시간으로 변환 (Intl API 사용, macOS/브라우저 환경 호환성 보장)
+        const koreaTime = new Date();
+        const y = koreaTime.getFullYear();
+        const m = String(koreaTime.getMonth() + 1).padStart(2, '0');
+        const d = String(koreaTime.getDate()).padStart(2, '0');
+        const h = String(koreaTime.getHours()).padStart(2, '0');
+        const min = String(koreaTime.getMinutes()).padStart(2, '0');
+        const s = String(koreaTime.getSeconds()).padStart(2, '0');
+        document.getElementById('interactiveDate').textContent = `${y}.${m}.${d}. ${h}:${min}:${s}`;
+      }
+      updateDate();
+      setInterval(updateDate, 1000);
+    </script>
+    <script>
+      // 게이지바 애니메이션 (차오르는 모션)
+      function animateGaugeBarLoop(minPercent = 0.1, maxPercent = 0.95, duration = 1200) {
+        const fill = document.querySelector('.gaugebar-fill');
+        let start = null;
+        let direction = 1; // 1: up, -1: down
+        let current = minPercent;
+        function step(timestamp) {
+          if (!start) start = timestamp;
+          const progress = Math.min((timestamp - start) / duration, 1);
+          let value;
+          if (direction === 1) {
+            value = current + (maxPercent - minPercent) * progress;
+          } else {
+            value = maxPercent - (maxPercent - minPercent) * progress;
+          }
+          fill.style.height = (value * 100) + '%';
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            direction *= -1;
+            current = direction === 1 ? minPercent : maxPercent;
+            start = null;
+            requestAnimationFrame(step);
+          }
+        }
+        requestAnimationFrame(step);
+      }
+      animateGaugeBarLoop(0.1, 0.95, 1200);
+    </script>
+    <script>
+      function animateRandomNumText(min = 80, max = 120, interval = 700) {
+        const numText = document.getElementById('gaugebarNumText');
+        function update() {
+          const value = Math.floor(Math.random() * (max - min + 1)) + min;
+          numText.textContent = value;
+        }
+        update();
+        setInterval(update, interval);
+      }
+      animateRandomNumText(80, 120, 700);
+    </script>
+    <script>
+      document.getElementById('homeBtn').onclick = function() {
+        window.location.href = 'ner-core.html';
+      };
+      document.getElementById('energyBtn').onclick = function() {
+        alert('에너지 추출 기능은 준비 중입니다!');
+      };
+    </script>
 </body>
 </html>
